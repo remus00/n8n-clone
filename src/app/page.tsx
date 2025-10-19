@@ -1,11 +1,8 @@
-import { Button } from '@/components/ui/button';
+import prisma from '@/lib/db';
 
-const Home = () => {
-    return (
-        <div className="flex h-dvh w-dvw items-center justify-center text-3xl font-bold underline">
-            <Button>Hello world</Button>
-        </div>
-    );
+const Home = async () => {
+    const users = await prisma.user.findMany();
+    return <div>{JSON.stringify(users)}</div>;
 };
 
 export default Home;
